@@ -14,8 +14,8 @@ router.get('/ping', function(req, res) {
 /* GET users page. */
 router.get('/users', function(req, res) {
 	var db = req.db;
-	var collection = db.get('usercollection');
-	collection.find({},{},function(e,docs){
+	var collection = db.collection('usercollection');
+	collection.find().toArray(function(e, docs) {
 		res.render('users', {
 			"users" : docs
 		});

@@ -7,10 +7,8 @@ var bodyParser = require('body-parser');
 
 // Change DB variables
 var mongo = require('mongodb');
-var monk = require('monk');
 
-
-//
+// Determine Mongo URL from env variables
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
@@ -30,12 +28,38 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
   }
 }
 
-var db = monk(mongoURL);
+var db = null;
+var dbDetails = new Object();
+
+var initDb = function(callback) {
+  if (mongoURL == null) return;
+
+  var mongodb = require('mongodb');  
+  if (mongodb == null) return;
+
+  mongodb.connect(mongoURL, function(err, conn) {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    db = conn;
+    dbDetails.databaseName = db.databaseName;
+    dbDetails.url = mongoURLLabel;
+    dbDetails.type = 'MongoDB';
+
+    console.log("Connected to MongoDB at: " + mongoURL);
+  });
+};
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+initDb(function(err){
+  console.log('Error connecting to Mongo. Message:\n'+err);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
