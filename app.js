@@ -11,10 +11,9 @@ var mongo = require('mongodb');
 // Determine Mongo URL from env variables
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
-if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-  var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase();
-  var mongoHost = process.env[mongoServiceName + "_SERVICE_HOST"];
-  var mongoPort = process.env[mongoServiceName + "_SERVICE_PORT"];
+if (mongoURL == null && process.env.MONGODB_SERVICE_HOST) {
+  var mongoHost = process.env.MONGODB_SERVICE_HOST;
+  var mongoPort = process.env.MONGODB_SERVICE_PORT;
   var mongoUser = process.env.MONGODB_USER
   if (mongoHost && mongoPort && process.env.MONGODB_DATABASE) {
     mongoURLLabel = mongoURL = 'mongodb://';
