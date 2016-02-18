@@ -22,9 +22,8 @@ if (mongoURL == null && process.env.MONGODB_SERVICE_HOST) {
     }
     // Provide UI label that excludes user id and pw
 
-    // TODO how to retrieve database name?
-    mongoURLLabel += mongoHost + ':' + mongoPort + '/sampledb';
-    mongoURL += mongoHost + ':' + mongoPort + '/sampledb';
+    mongoURLLabel += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
+    mongoURL += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
   }
 }
 
