@@ -15,15 +15,16 @@ if (mongoURL == null && process.env.MONGODB_SERVICE_HOST) {
   var mongoHost = process.env.MONGODB_SERVICE_HOST;
   var mongoPort = process.env.MONGODB_SERVICE_PORT;
   var mongoUser = process.env.MONGODB_USER
-  if (mongoHost && mongoPort && process.env.MONGODB_DATABASE) {
+  if (mongoHost && mongoPort) {
     mongoURLLabel = mongoURL = 'mongodb://';
     if (process.env.MONGODB_USER && process.env.MONGODB_PASSWORD) {
       mongoURL += process.env.MONGODB_USER + ':' + process.env.MONGODB_PASSWORD + '@';
     }
     // Provide UI label that excludes user id and pw
 
-    mongoURLLabel += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
-    mongoURL += mongoHost + ':' + mongoPort + '/' + process.env.MONGODB_DATABASE;
+    // TODO how to retrieve database name?
+    mongoURLLabel += mongoHost + ':' + mongoPort + '/sampledb';
+    mongoURL += mongoHost + ':' + mongoPort + '/sampledb';
   }
 }
 
