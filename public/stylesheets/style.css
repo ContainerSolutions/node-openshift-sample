@@ -1,8 +1,76 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Georgia';
+  background-color: #faf9f0;
+  color: #444;
+}
+
+header {
+  font-family: 'Quicksand';
+  padding: 10px 10px;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  height: 50px;
+/*
+   * Note the use of the `main-color`
+   * variable and the `darken` function
+   */
+  background-color: #4097EE;
+  border-bottom: 1px solid #0854A1;
+  text-shadow: 0px -1px 0px #0854A1;
 }
 
 a {
   color: #00B7FF;
+}
+
+
+.cs{
+  background-color:#ffffff;
+  position:absolute;
+  background-image: url(../images/cs.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/* Can remove all below? */
+
+.container {
+  width: 500px;
+  /*margin: 50px auto;*/
+  overflow: hidden;
+}
+.main-content {
+  float: left;
+  width: 300px;
+}
+.main-content p {
+  margin-bottom: 20px;
+}
+p {
+  line-height: 1.8;
+}
+/*footer {
+  width: 500px;
+  margin: 50px auto;
+  border-top: 1px dotted #ccc;
+  padding-top: 5px;
+  font-size: 13px;
+}
+*/
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
 }
