@@ -44,4 +44,10 @@ var onClick = function(e) {
 	});
 }
 
+var hereComesTheSun =  function(e) {
+	$.delete('/clouds', function(data) {
+		console.log('No more clouds');
+	});
+}
+
 $(document).ready(loadData())
