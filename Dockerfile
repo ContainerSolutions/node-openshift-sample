@@ -1,4 +1,4 @@
-FROM node:argon
+FROM registry.access.redhat.com/openshift3/nodejs-010-rhel7
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
