@@ -79,6 +79,11 @@ router.post('/clouds', function(req, res) {
 /* GET all stored clicks. */
 router.get('/clouds', function(req, res) {
 	var db = req.db;
+	if (!db) {
+		// res.send("Problem connecting to database.");
+		res.end("[]");
+		return
+	}
 	var col = db.collection('coordinates');
 	col.find().toArray(function(e, docs) {
 		res.setHeader('Content-Type', 'application/json');

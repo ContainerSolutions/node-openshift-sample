@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('./app');
 var debug = require('debug')('node-openshift-sample:server');
 var http = require('http');
 
@@ -12,8 +12,9 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8080');
+var port = normalizePort(process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || '8080');
 app.set('port', port);
+app.set('ip', process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1");
 
 /**
  * Create HTTP server.
