@@ -1,11 +1,9 @@
 FROM registry.access.redhat.com/openshift3/nodejs-010-rhel7
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+WORKDIR /opt/app-root/src/
 # Install app dependencies
-COPY package.json /usr/src/app/
+COPY package.json /opt/app-root/src/
 RUN npm install
 # Bundle app source
-COPY . /usr/src/app
+COPY . /opt/app-root/src/
 EXPOSE 8080
 CMD [ "npm", "start" ]
