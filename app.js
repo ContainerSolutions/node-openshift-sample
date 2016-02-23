@@ -38,6 +38,7 @@ var initDb = function(callback) {
 
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
+      console.log("Error connectiong to MongoDB URL: " + mongoURL);
       callback(err);
       return;
     }
