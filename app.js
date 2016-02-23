@@ -12,8 +12,8 @@ var mongo = require('mongodb');
 var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 var mongoURLLabel = "";
 if (mongoURL == null && process.env.MONGODB_SERVICE_HOST) {
-  var mongoHost = process.env.MONGODB_SERVICE_HOST;
-  var mongoPort = process.env.MONGODB_SERVICE_PORT;
+  var mongoHost = process.env.MONGODB_SERVICE_HOST || process.env.MONGODB_26_RHEL7_SERVICE_HOST;
+  var mongoPort = process.env.MONGODB_SERVICE_PORT || process.env.MONGODB_26_RHEL7_SERVICE_PORT;
   var mongoUser = process.env.MONGODB_USER
   if (mongoHost && mongoPort) {
     mongoURLLabel = mongoURL = 'mongodb://';
