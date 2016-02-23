@@ -29,13 +29,15 @@ if (mongoURL == null && process.env.MONGODB_SERVICE_HOST) {
 
 var db = null;
 var dbDetails = new Object();
-
+console.log("MongoDB URL: " + mongoURL);
 var initDb = function(callback) {
   if (mongoURL == null) return;
 
   var mongodb = require('mongodb');  
-  if (mongodb == null) return;
-
+  if (mongodb == null) {
+    console.log("mongodb is NULL");
+    return;
+  }
   mongodb.connect(mongoURL, function(err, conn) {
     if (err) {
       console.log("Error connectiong to MongoDB URL: " + mongoURL);
